@@ -18,9 +18,10 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <TextBlock x:Name="welcomeblock" Text="Welcome to this password generator, follow the instructions and be safe!" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Height="30" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="15" FontStyle="Oblique" FontWeight="Bold"  Background="AntiqueWhite" Padding="5" TextAlignment="Center"/>
-        <TextBlock x:Name="passwordlengthblock" Text="Use the slider to define the exact number of characters used for the final password:" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" TextWrapping="Wrap" FontSize="13" FontWeight="Light" Height="35" VerticalAlignment="Top"/>
+        <TextBlock x:Name="welcomeblock" Text="Welcome to this password generator, follow the instructions and be safe!" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Height="30" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="15" FontStyle="Oblique" FontWeight="Bold"  Background="LightBlue" Padding="5" TextAlignment="Center"/>
+        <TextBlock x:Name="passwordlengthblock" Text="Use the slider to define the exact number of characters used for the final password:" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" TextWrapping="Wrap" FontSize="13" FontWeight="Light" Height="35" VerticalAlignment="Top" Background="AntiqueWhite"/>
         <Slider x:Name="slider" Grid.Row="1" Grid.Column="2" Margin="10" Height="20" VerticalAlignment="Top"/>
+        <TextBlock x:Name="userpreference" Text="Enter a word, symbol or digit you want to get included in the generated password:" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" TextWrapping="Wrap" FontSize="13" FontWeight="Light" Height="35" VerticalAlignment="Bottom" Background="AntiqueWhite"/>
 
     </Grid>
 </Window>
