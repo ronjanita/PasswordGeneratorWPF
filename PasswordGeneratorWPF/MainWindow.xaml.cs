@@ -22,9 +22,6 @@ namespace PasswordGeneratorWPF
     {
         private string requiredCharacter = "";
         private int passwordlength = 1;
-        private bool uppercase = false;
-        private bool digits = false;
-        private bool symbols = false;
         public MainWindow()
         {
             InitializeComponent();
@@ -37,40 +34,16 @@ namespace PasswordGeneratorWPF
         {
             requiredCharacter = Userinputtext.Text;
         }
-        private void Uppercase_Checked(object sender, RoutedEventArgs e)
-        {
-            uppercase = true;
-        }
-        private void Uppercase_Unchecked(object sender, RoutedEventArgs e)
-        {
-            uppercase = false;
-        }
-        private void Digits_Checked(object sender, RoutedEventArgs e)
-        {
-            digits = true;
-        }
-        private void Digits_Unchecked(object sender, RoutedEventArgs e)
-        {
-            digits = false;
-        }
-        private void Symbols_Checked(object sender, RoutedEventArgs e)
-        {
-            symbols = true;
-        }
-        private void Symbols_Unchecked(object sender, RoutedEventArgs e)
-        {
-            symbols = false;
-        }
         private void Generatepassword_Click(object sender, RoutedEventArgs e)
         {
-            string password = GeneratePassword(passwordlength, uppercase, digits, symbols, requiredCharacter);
+            string password = GeneratePassword(passwordlength, Uppercase.IsChecked == true, Digits.IsChecked == true, Symbols.IsChecked == true, requiredCharacter);
             ShowGeneratedPassword(password);
         }
         private void ShowGeneratedPassword(string password)
         {
             Finalpassword.Text = password;
         }
-        private string GeneratePassword(int length, bool includeUpper, bool includeNum, bool includeSym, string required)
+        private string GeneratePassword(int length, bool Uppercase, bool Digits, bool Symbols, string required)
         {
             string lowercase = "abcdefghijklmnopqrstuvwxyz";
             string uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -78,9 +51,9 @@ namespace PasswordGeneratorWPF
             string symbols = "!@#$%^&*()_+-=[]{}|;:,.<>?";
 
             string charPool = lowercase;
-            if (includeUpper) charPool += uppercase;
-            if (includeNum) charPool += numbers;
-            if (includeSym) charPool += symbols;
+            if (Uppercase) charPool += uppercase;
+            if (Digits) charPool += numbers;
+            if (Symbols) charPool += symbols;
 
             Random rand = new Random();
             List<char> passwordChars = new List<char>();
@@ -95,7 +68,6 @@ namespace PasswordGeneratorWPF
             {
                 passwordChars.Add(charPool[rand.Next(charPool.Length)]);
             }
-
             return new string(passwordChars.OrderBy(_ => rand.Next()).ToArray());
         }
     }
